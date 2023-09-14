@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 class User {
     private $id;
@@ -55,7 +55,7 @@ class User {
         $this->birthdate = $birthdate;
     }
 
-    public function inscripUser($name, $surname, $email, $password,$birthdate){
+    public function inscripUser($name, $surname, $email, $password, $birthdate){
 
         $servername = "localhost";
         $username = "root";
@@ -101,5 +101,67 @@ class User {
             }
         }
 
+    }
+
+    public function connecUser($email, $password){
+
+        
+        $servername = "localhost";
+        $username = "root";
+        $password = "Clement2203$";
+        $dbname = "cv-crafter";
+
+        try {
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo "Connexion réussie<br>";
+        } catch(PDOException $e) {
+            echo "Erreur de connexion : " . $e->getMessage();
+        }
+
+        if (isset($_POST["email"]) && $_POST["password"]){
+            $email = $_POST["email"];
+            $password = $_POST["password"];
+            $hash_password = sha1($password);
+
+            $sql = "SELECT * FROM user WHERE email = :email";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->execute();
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($user) {
+                if ($hash_password === $user["password"]){
+                    $_SESSION['username'] = 'email';
+                    $username = $_SESSION["username"];
+                    header("location: profil.php");
+                    echo "connected";
+                }
+                else{
+                    echo "incorect password";
+                }
+            }
+            else{
+                echo "User not found";
+            }
+        }
+    }
+
+    public function profileModif($name, $surname, $email, $password, $birthdate){
+        
+        $servername = "localhost";
+        $username = "root";
+        $password = "Clement2203$";
+        $dbname = "cv-crafter";
+
+        try {
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo "Connexion réussie<br>";
+        } catch(PDOException $e) {
+            echo "Erreur de connexion : " . $e->getMessage();
+        }
+
+        if ($_POST[])
     }
 }

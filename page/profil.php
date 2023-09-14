@@ -1,17 +1,42 @@
+<?php
+session_start();
 
+$servername = "localhost";
+$username = "root";
+$password = "Clement2203$";
+$dbname = "cv-crafter";
+
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connexion réussie<br>";
+} catch(PDOException $e) {
+    echo "Erreur de connexion : " . $e->getMessage();
+}
+
+if (isset($_SESSION["username"])){
+
+    $sql = "SELECT * FROM user WHERE email = :email";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV-crafter</title>
-    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 
 </head>
 <body>
-    <div>
-        <h2>Sign up</h2>
-        <form id="form_sign_in" method="post" action="page/module_inscription.php">
+
+<form id="form_modif_profil" method="post" action="">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" placeholder="enter your name : ">
             <label for="surname">Surname</label>
@@ -26,6 +51,5 @@
             <input type="password" name="confirme_password" id="confirme_password">
             <input type="submit" value="Enter">
         </form>
-        <a href="page/connecxion.php">log in</a>
-    </div>
+    
 </body>

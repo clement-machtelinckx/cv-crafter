@@ -1,6 +1,6 @@
 <?php
 // Inclure la classe User
-include 'class/User.php';
+include '../class/User.php';
 
 // Vérifier si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

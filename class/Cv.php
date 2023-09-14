@@ -50,7 +50,7 @@ class Cv{
         $this->experiences = $experiences;
     }
     public function getFormations(){
-        return $this->experiences;
+        return $this->formations;
     }
     public function setFormations($formations){
         $this->formations = $formations;

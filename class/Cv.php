@@ -62,4 +62,36 @@ class Cv{
         $this->loisirs = $loisirs;
     }
 
+    public function addExperience(){
+
+    }
+    public function delExperience(){
+        
+    }
+    public function updateExperience(){
+
+    }
+
+    public function addFormation(){
+
+    }
+
+    public function delFormation(){
+
+    }
+    public function updateFormation(){
+
+    }
+
+    public function addLoisir(){
+
+    }
+    public function delLoisir(){
+
+    }
+    public function updateLoisir(){
+        
+    }
+
+
 }

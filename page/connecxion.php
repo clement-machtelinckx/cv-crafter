@@ -16,6 +16,8 @@
     <label for="password">Password</label>
     <input type="password" name="password" id="password">
     <input type="submit" value="Enter">
-    <a href="inscription">sign in</a>
+    
     </form>
+    <a href="inscription">sign in</a>
+    <a href="../index.php">Index</a>
 </body>

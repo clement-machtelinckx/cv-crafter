@@ -8,13 +8,12 @@ $user = new User(); // Créez une instance de la classe User
 
 if (isset($_SESSION['username'])) {
     $email = $_SESSION['username'];
-    var_dump($email);
+
 
     
     // Utilisez la méthode getUserInfo pour obtenir les données de l'utilisateur
     $userData = $user->getUserInfos($email);
-    var_dump($userData);
-    var_dump($userData["surname"]);
+
 
 
 
@@ -36,12 +35,19 @@ if (isset($_SESSION['username'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV-crafter</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="../style/style_profil.css">
 
 </head>
 <body>
 
-<form id="form_modif_profil" method="post" action="module_profil.php">
+<?php
+if (isset($userData)) {
+    echo "Bienvenue " . $userData["name"] . " " . $userData["surname"];
+}
+?>
+
+    <div>
+        <form id="form_modif_profil" method="post" action="module_profil.php">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" placeholder="enter your name : " value="<?php echo htmlspecialchars($userData["name"]); ?>">
             <label for="surname">Surname</label>
@@ -56,6 +62,8 @@ if (isset($_SESSION['username'])) {
             <input type="password" name="confirme_password" id="confirme_password">
             <input type="submit" value="Enter">
         </form>
+    </div>
+    <a href="deconnecxion.php">deconnexion</a>
     
 </body>
 

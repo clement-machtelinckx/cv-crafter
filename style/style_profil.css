@@ -1,0 +1,6 @@
+#form_modif_profil {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20rem;
+    margin-right: 20rem;
+}

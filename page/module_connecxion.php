@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include '../class/User.php';
 
 // Vérifier si le formulaire a été soumis

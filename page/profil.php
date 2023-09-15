@@ -1,27 +1,32 @@
 <?php
-session_start();
 
-$servername = "localhost";
-$username = "root";
-$password = "Clement2203$";
-$dbname = "cv-crafter";
+include '../class/User.php'; // Assurez-vous d'inclure correctement le fichier User.php
 
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connexion réussie<br>";
-} catch(PDOException $e) {
-    echo "Erreur de connexion : " . $e->getMessage();
-}
 
-if (isset($_SESSION["username"])){
+$user = new User(); // Créez une instance de la classe User
 
-    $sql = "SELECT * FROM user WHERE email = :email";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-    $stmt->execute();
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-}
+
+if (isset($_SESSION['username'])) {
+    $email = $_SESSION['username'];
+    var_dump($email);
+
+    
+    // Utilisez la méthode getUserInfo pour obtenir les données de l'utilisateur
+    $userData = $user->getUserInfos($email);
+    var_dump($userData);
+    var_dump($userData["surname"]);
+
+
+
+    // Assurez-vous que les données de l'utilisateur existent avant d'essayer de les afficher
+    // if (!empty($userData)) {
+    //     $name = $userData->getName();
+    //     $surname = $userData->getSurname();
+    //     $email = $userData->getEmail();
+    //     $birthdate = $userData->getBirthdate();
+
+    // }
+
 
 
 ?>
@@ -36,15 +41,15 @@ if (isset($_SESSION["username"])){
 </head>
 <body>
 
-<form id="form_modif_profil" method="post" action="">
+<form id="form_modif_profil" method="post" action="module_profil.php">
             <label for="name">Name</label>
-            <input type="text" name="name" id="name" placeholder="enter your name : ">
+            <input type="text" name="name" id="name" placeholder="enter your name : " value="<?php echo htmlspecialchars($userData["name"]); ?>">
             <label for="surname">Surname</label>
-            <input type="text" name="surname" id="surname" placeholder="enter your surname : ">
+            <input type="text" name="surname" id="surname" placeholder="enter your surname : " value="<?php echo htmlspecialchars($userData["surname"]); ?>">
             <label for="email">Email</label>
-            <input type="text" name="email" id="email" placeholder="enter your email : ">
+            <input type="text" name="email" id="email" placeholder="enter your email : " value="<?php echo htmlspecialchars($userData["email"]); ?>">
             <label for="birthdate">Birthdate</label>
-            <input type="date" name="birthdate" id="birthdate">
+            <input type="date" name="birthdate" id="birthdate" value="<?php echo htmlspecialchars($userData["birthdate"]); ?>">
             <label for="password">Password</label>
             <input type="password" name="password" id="password">
             <label for="confirme_password">Confirme password</label>
@@ -53,3 +58,6 @@ if (isset($_SESSION["username"])){
         </form>
     
 </body>
+
+
+<?php  } ?>

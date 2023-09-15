@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Inclure la classe User
 include '../class/User.php';
 
@@ -19,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Appelez la méthode inscripUser pour enregistrer l'utilisateur
     $user->inscripUser($name, $surname, $email, $password, $birthdate);
-    header("Location: profil.php");
+    header("Location: connecxion.php");
     exit;
 }
 

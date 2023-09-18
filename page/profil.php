@@ -47,7 +47,7 @@ if (isset($userData)) {
 ?>
 
     <div>
-        <form id="form_modif_profil" method="post" action="module_profil.php">
+        <form id="form_modif_profil" method="post" action="../module/module_profil.php">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" placeholder="enter your name : " value="<?php echo htmlspecialchars($userData["name"]); ?>">
             <label for="surname">Surname</label>
@@ -63,7 +63,7 @@ if (isset($userData)) {
             <input type="submit" value="Enter">
         </form>
     </div>
-    <a href="deconnecxion.php">deconnexion</a>
+    <a href="deconnexion.php">deconnexion</a>
     
 </body>
 

@@ -9,8 +9,8 @@
 
 </head>
 <body>
-    <h1>Connecxion</h1>
-    <form id="form_connecxion" method="post" action="module_connecxion.php">
+    <h1>Connexion</h1>
+    <form id="form_connexion" method="post" action="../module/module_connexion.php">
     <label for="email">email</label>
     <input type="text" name="email" id="email">
     <label for="password">Password</label>

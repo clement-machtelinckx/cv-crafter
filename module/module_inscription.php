@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Appelez la méthode inscripUser pour enregistrer l'utilisateur
     $user->inscripUser($name, $surname, $email, $password, $birthdate);
-    header("Location: connecxion.php");
+    header("Location: ../page/connexion.php");
     exit;
 }
 

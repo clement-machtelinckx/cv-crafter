@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Appelez la méthode inscripUser pour enregistrer l'utilisateur
     $user->connecUser($email, $password);
-    header("Location: profil.php");
+    header("Location: ../page/profil.php");
     exit;
 }
 

@@ -11,7 +11,7 @@
 <body>
     <div>
         <h2>Sign up</h2>
-        <form id="form_sign_in" method="post" action="module_inscription.php">
+        <form id="form_sign_in" method="post" action="../module/module_inscription.php">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" placeholder="enter your name : ">
             <label for="surname">Surname</label>

@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 
 class User {
     private $id;
@@ -133,7 +133,7 @@ class User {
             if ($user) {
                 if ($hash_password === $user["password"]){
                     $_SESSION['username'] = $user['email'];
-
+                    $_SESSION["id"] = $user["id"];
                     //header("location: profil.php");
                     echo "connected";
                     var_dump($_SESSION);
@@ -230,4 +230,57 @@ class User {
 
         }
     }
-}
+
+    public function createCv($id,  string $cv_title = "", string $cv_content = ""){
+    
+        if (isset($_SESSION["username"])){
+
+        $email = $_SESSION["username"];
+        $cv_title = $_POST["cv_name"];
+        $servername = "localhost";
+        $username = "root";
+        $password = "Clement2203$";
+        $dbname = "cv-crafter";
+        }
+
+        
+        try {
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo "Connexion réussie<br>";
+        } catch(PDOException $e) {
+            echo "Erreur de connexion : " . $e->getMessage();
+        }
+
+
+           
+           $sql = "INSERT INTO cv (id_user, cv_title)
+            VALUES (:id_user, :cv_title)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id_user', $id, PDO::PARAM_STR);
+            $stmt->bindParam(':cv_title', $cv_title, PDO::PARAM_STR);
+            $stmt->execute();
+
+            try {
+                // Insérer un nouveau CV associé à l'utilisateur
+                $sql = "INSERT INTO cv (id_user) VALUES (:id_user)";
+                $stmt = $conn->prepare($sql);
+                $stmt->bindParam(':id_user', $id, PDO::PARAM_STR);
+                $stmt->execute();
+    
+                // Récupérer l'ID du nouveau CV créé
+                $newCvId = $conn->lastInsertId();
+    
+                // Vous pouvez renvoyer l'ID du nouveau CV créé ici
+                return $newCvId;
+            } catch(PDOException $e) {
+                echo "Erreur : " . $e->getMessage();
+                // Gérer l'erreur, par exemple, renvoyer une valeur spécifique pour indiquer une erreur
+                return false;
+            }
+        }
+
+
+    }
+    
+

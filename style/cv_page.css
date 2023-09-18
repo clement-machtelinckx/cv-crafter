@@ -1,0 +1,21 @@
+#form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20rem;
+    margin-right: 20rem;
+}
+#form_addExperience {
+    display: flex;
+    flex-direction: column;
+
+}
+#form_addFormation {
+    display: flex;
+    flex-direction: column;
+
+}
+
+#form_loisir {
+    display: flex;
+    flex-direction: column;
+}

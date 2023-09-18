@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include '../class/User.php'; // Assurez-vous d'inclure correctement le fichier User.php
 
 
@@ -63,8 +63,13 @@ if (isset($userData)) {
             <input type="submit" value="Enter">
         </form>
     </div>
+    <form id="form_createCv" method="post" action="../module/module_createCv.php">
+        <label for="cv_name">nom de cv</label>
+        <input type="text" name="cv_name" id="cv_name">
+        <button type="submit" name="create_cv">Crée ton cv</button>
+    </form>
     <a href="deconnexion.php">deconnexion</a>
-    
+
 </body>
 
 

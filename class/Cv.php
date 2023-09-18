@@ -62,7 +62,7 @@ class Cv{
         $this->loisirs = $loisirs;
     }
 
-    public function addExperience($id_cv, $exp_title, $date_start, $date_end, $exp_resume){
+    public function addExperience($id_cv, $exp_title, $date_start, $date_end, $exp_explanation){
        
         $servername = "localhost";
         $username = "root";

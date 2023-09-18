@@ -8,25 +8,9 @@ $user = new User(); // Créez une instance de la classe User
 
 if (isset($_SESSION['username'])) {
     $email = $_SESSION['username'];
-
-
     
     // Utilisez la méthode getUserInfo pour obtenir les données de l'utilisateur
     $userData = $user->getUserInfos($email);
-
-
-
-
-    // Assurez-vous que les données de l'utilisateur existent avant d'essayer de les afficher
-    // if (!empty($userData)) {
-    //     $name = $userData->getName();
-    //     $surname = $userData->getSurname();
-    //     $email = $userData->getEmail();
-    //     $birthdate = $userData->getBirthdate();
-
-    // }
-
-
 
 ?>
 <!DOCTYPE html>
@@ -63,6 +47,7 @@ if (isset($userData)) {
             <input type="submit" value="Enter">
         </form>
     </div>
+    <a href="create_cv.php">Vos cv</a>
     <form id="form_createCv" method="post" action="../module/module_createCv.php">
         <label for="cv_name">nom de cv</label>
         <input type="text" name="cv_name" id="cv_name">

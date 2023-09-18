@@ -77,7 +77,7 @@ class Cv{
             echo "Erreur de connexion : " . $e->getMessage();
         }
 
-        $sql = "INSERT INTO experiences (id_cv, exp_title, date_start, date_end, exp_explanation)
+        $sql = "INSERT INTO experience (id_cv, exp_title, date_start, date_end, exp_explanation)
         VALUES (:id_cv, :exp_title, :date_start, :date_end, :exp_explanation)";
 
         try {

@@ -280,6 +280,29 @@ class User {
             }
         }
 
+        public function getListCvs($id_user) {
+            $servername = "localhost";
+            $username = "root";
+            $password = "Clement2203$";
+            $dbname = "cv-crafter";
+        
+            try {
+                $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            } catch(PDOException $e) {
+                echo "Erreur de connexion : " . $e->getMessage();
+                return array(); // Retourne un tableau vide en cas d'erreur.
+            }
+        
+            $sql = "SELECT id, cv_title FROM cv WHERE id_user = :id_user";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id_user', $id_user, PDO::PARAM_STR);
+            $stmt->execute();
+        
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        }
+            
 
     }
     

@@ -1,12 +1,16 @@
 <?php
 session_start();
 include "../class/Cv.php";
-
+include "../class/User.php";
 
     $session_user = $_SESSION['username'];
     $session_id = $_SESSION['id'];
 
-?>
+    $user =new User;
+    ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +23,26 @@ include "../class/Cv.php";
 <body>
 
     <h1>Creation de cv</h1>
+    <div id="form">
+        <form name="cv_selector" id="cv_selector" method="get" action="../module/module_select.php">
+        <label for="select_cv">Sélectionnez un CV : </label>
+        <select id="select_cv" name="select_cv">
+        <?php
+
+        // Obtenez la liste des CV associés à l'utilisateur
+        $listCvs = $user->getListCvs($session_id);
+        var_dump($listCvs);
+        foreach ($listCvs as $cv) {
+            echo '<option value="' . $cv['id'] . '">' . $cv['cv_title'] . '</option>';
+        }
+        ?>
+        </select>
+        <input type="submit" name="load_cv" value="Charger le CV sélectionné">
+        </form>
+        <?php var_dump($listCvs);?>
+        <?php var_dump($session_id);?>
+        <?php var_dump($_SESSION["id_cv"]); ?>
+    </div>
     <div id="form">
         <h2>Experience</h2>
         <form id="form_addExperience" method="post" action="../module/module_addExperience.php">
@@ -58,4 +82,7 @@ include "../class/Cv.php";
             
         </form>
     </div>
+        <a href="deconnexion.php">deconnexion</a>
+
+    
 </body>

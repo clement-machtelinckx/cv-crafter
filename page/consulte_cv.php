@@ -58,3 +58,8 @@ if (isset($_SESSION["id_cv"]) && !empty($_SESSION["id_cv"])) {
     echo "L'ID du CV n'est pas défini.";
 }
 ?>
+
+<form method="post" action="../module/module_generatePDF.php">
+    <input type="hidden" name="id_cv" value="<?= $_SESSION["id_cv"] ?>">
+    <button type="submit" name="save_as_pdf">Sauvegarder en PDF</button>
+</form>

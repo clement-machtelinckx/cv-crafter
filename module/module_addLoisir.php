@@ -15,7 +15,7 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && isset($_SESSION['username']) && is
 
     // Appelez la méthode inscripUser pour enregistrer l'utilisateur
     $cv->addLoisir($id_cv, $loisir_title, $loisir_content);
-   // header("Location: ../page/create_cv.php");
+    header("Location: ../page/create_cv.php");
     exit;
 }
 

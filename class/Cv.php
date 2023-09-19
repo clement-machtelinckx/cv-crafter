@@ -186,5 +186,90 @@ class Cv{
         
     }
 
+    public function getCvDetails($id_cv) {
+        $servername = "localhost";
+        $username = "root";
+        $password = "Clement2203$";
+        $dbname = "cv-crafter";
+    
+        try {
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo "Connexion réussie<br>";
+        } catch (PDOException $e) {
+            echo "Erreur de connexion : " . $e->getMessage();
+        }
+    
+        // Récupérez les expériences pour ce CV
+        $sql = "SELECT * FROM experience WHERE id_cv = :id_cv";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':id_cv', $id_cv, PDO::PARAM_STR);
+        $stmt->execute();
+        $experiences = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        // Récupérez les formations pour ce CV
+        $sql = "SELECT * FROM formation WHERE id_cv = :id_cv";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':id_cv', $id_cv, PDO::PARAM_STR);
+        $stmt->execute();
+        $formations = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        // Récupérez les loisirs pour ce CV
+        $sql = "SELECT * FROM loisir WHERE id_cv = :id_cv";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':id_cv', $id_cv, PDO::PARAM_STR);
+        $stmt->execute();
+        $loisirs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        // Vous pouvez maintenant retourner ces données pour les utiliser dans votre vue
+        return [
+            'experiences' => $experiences,
+            'formations' => $formations,
+            'loisirs' => $loisirs,
+        ];
+    }
+    
 
+    public function saveCvToDatabase($id_cv, $cv_title, $experiences, $formations, $loisirs) {
+        $servername = "localhost";
+        $username = "root";
+        $password = "Clement2203$";
+        $dbname = "cv-crafter";
+    
+        try {
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo "Connexion réussie<br>";
+        } catch (PDOException $e) {
+            echo "Erreur de connexion : " . $e->getMessage();
+        }
+    
+        try {
+            // Convertissez les données du CV en un tableau associatif
+            $cv_data = [
+                'cv_title' => $cv_title,
+                'experiences' => $experiences,
+                'formations' => $formations,
+                'loisirs' => $loisirs
+            ];
+    
+            // Convertissez le tableau associatif en JSON
+            $cv_json = json_encode($cv_data);
+    
+            // Mettez à jour la colonne cv_content dans la table cv
+            $sql = "UPDATE cv SET cv_content = :cv_content, cv_title = :cv_title WHERE id = :id_cv";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':cv_content', $cv_json, PDO::PARAM_STR);
+            $stmt->bindParam(':cv_title', $cv_title, PDO::PARAM_STR);
+            $stmt->bindParam(':id_cv', $id_cv, PDO::PARAM_INT);
+            $stmt->execute();
+    
+            return true; // Succès
+        } catch (PDOException $e) {
+            echo "Erreur : " . $e->getMessage();
+            return false; // Erreur
+        }
+    }
+    
+    
 }

@@ -41,6 +41,7 @@ include "../class/User.php";
 
         <?php var_dump($_SESSION["id_cv"]); ?>
         <?php echo "cv charger : " . $_SESSION["id_cv"] ?>
+        <a href="consulte_cv.php">consulte ton cv.</a>
     </div>
     <div id="form">
         <h2>Experience</h2>
@@ -81,6 +82,7 @@ include "../class/User.php";
             
         </form>
     </div>
+        <a href="profil.php">retour au profil.</a>
         <a href="deconnexion.php">deconnexion</a>
 
     

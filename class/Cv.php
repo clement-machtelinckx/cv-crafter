@@ -104,8 +104,39 @@ class Cv{
 
     }
 
-    public function addFormation(){
+    public function addFormation($id_cv, $forma_title, $date_start, $date_end, $forma_content){
 
+        $servername = "localhost";
+        $username = "root";
+        $password = "Clement2203$";
+        $dbname = "cv-crafter";
+
+        try {
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo "Connexion réussie<br>";
+        } catch(PDOException $e) {
+            echo "Erreur de connexion : " . $e->getMessage();
+        }
+
+        $sql = "INSERT INTO formation (id_cv, forma_title, date_start, date_end, forma_content)
+        VALUES (:id_cv, :forma_title, :date_start, :date_end, :forma_content)";
+
+        try {
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id_cv', $id_cv, PDO::PARAM_STR);
+            $stmt->bindParam(':forma_title', $forma_title, PDO::PARAM_STR);
+            $stmt->bindParam(':date_start', $date_start, PDO::PARAM_STR);
+            $stmt->bindParam(':date_end', $date_end, PDO::PARAM_STR);
+            $stmt->bindParam(':forma_content', $forma_content, PDO::PARAM_STR);
+
+            $stmt->execute();
+            echo "Expérience ajoutée avec succès.";
+            return true; // Retourne true pour indiquer le succès de l'opération.
+        } catch(PDOException $e) {
+            echo "Erreur : " . $e->getMessage();
+            return false; // En cas d'erreur lors de l'insertion, retourne false.
+        }
     }
 
     public function delFormation(){
@@ -115,7 +146,37 @@ class Cv{
 
     }
 
-    public function addLoisir(){
+    public function addLoisir($id_cv, $loisir_title, $loisir_content){
+
+        $servername = "localhost";
+        $username = "root";
+        $password = "Clement2203$";
+        $dbname = "cv-crafter";
+
+        try {
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo "Connexion réussie<br>";
+        } catch(PDOException $e) {
+            echo "Erreur de connexion : " . $e->getMessage();
+        }
+
+        $sql = "INSERT INTO loisir (id_cv, loisir_title, loisir_content)
+        VALUES (:id_cv, :loisir_title, :loisir_content)";
+
+        try {
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id_cv', $id_cv, PDO::PARAM_STR);
+            $stmt->bindParam(':loisir_title', $loisir_title, PDO::PARAM_STR);
+            $stmt->bindParam(':loisir_content', $loisir_content, PDO::PARAM_STR);
+
+            $stmt->execute();
+            echo "Expérience ajoutée avec succès.";
+            return true; // Retourne true pour indiquer le succès de l'opération.
+        } catch(PDOException $e) {
+            echo "Erreur : " . $e->getMessage();
+            return false; // En cas d'erreur lors de l'insertion, retourne false.
+        }
 
     }
     public function delLoisir(){

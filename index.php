@@ -11,6 +11,6 @@
 <body>
     <div>
         <a href="page/inscription.php">sign in</a>
-        <a href="page/connecxion.php">log in</a>
+        <a href="page/connexion.php">log in</a>
     </div>
 </body>

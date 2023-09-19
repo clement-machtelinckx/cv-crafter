@@ -6,6 +6,7 @@ if (($_SERVER["REQUEST_METHOD"] == "GET") && isset($_SESSION['username']) && iss
     $id_cv = $_GET["select_cv"];
     $_SESSION["id_cv"] = $id_cv;
 
+
     // Utilisez la fonction header() pour rediriger vers create_cv.php avec l'ID du CV en tant que paramètre GET
     header("Location: ../page/create_cv.php?id_cv=" . $_SESSION["id_cv"]);
     exit;

@@ -26,6 +26,6 @@
             <input type="password" name="confirme_password" id="confirme_password">
             <input type="submit" value="Enter">
         </form>
-        <a href="connecxion.php">log in</a>
+        <a href="connexion.php">log in</a>
     </div>
 </body>

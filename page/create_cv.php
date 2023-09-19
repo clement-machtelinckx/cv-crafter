@@ -31,7 +31,6 @@ include "../class/User.php";
 
         // Obtenez la liste des CV associés à l'utilisateur
         $listCvs = $user->getListCvs($session_id);
-        var_dump($listCvs);
         foreach ($listCvs as $cv) {
             echo '<option value="' . $cv['id'] . '">' . $cv['cv_title'] . '</option>';
         }
@@ -39,9 +38,9 @@ include "../class/User.php";
         </select>
         <input type="submit" name="load_cv" value="Charger le CV sélectionné">
         </form>
-        <?php var_dump($listCvs);?>
-        <?php var_dump($session_id);?>
+
         <?php var_dump($_SESSION["id_cv"]); ?>
+        <?php echo "cv charger : " . $_SESSION["id_cv"] ?>
     </div>
     <div id="form">
         <h2>Experience</h2>
@@ -59,21 +58,21 @@ include "../class/User.php";
     </div>
     <div id="form">
         <h2>Formation</h2>
-        <form id="form_addFormation" method="post" action="">
+        <form id="form_addFormation" method="post" action="../module/module_addFormation.php">
             <label for="forma_title">forma title</label>
             <input type="text" name="forma_title" id="forma_title">
             <label for="date_start">debut de formation</label>
             <input type="date" name="date_start" id="date_start">
             <label for="date_end">fin de formation</label>
             <input type="date" name="date_end" id="date_end">
-            <label for="forma_explanation">formation discription </label>
-            <input type="text" name="forma_explanation" id="forma_explanation">
+            <label for="forma_content">formation discription </label>
+            <input type="text" name="forma_content" id="forma_content">
             <input type="submit" value="enter">
         </form>
     </div>
     <div id="form">
         <h2>Loisir</h2>
-        <form id="form_loisir" method="post" action="">
+        <form id="form_loisir" method="post" action="../module/module_addLoisir.php">
         <label for="loisir_title">loisir title</label>
         <input  type="text" name="loisir_title" id="loisir_title">
         <label for="loisir_content">loisir content</label>

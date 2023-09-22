@@ -81,8 +81,9 @@ include "../class/User.php";
             
         </form>
     </div>
+    <div id="bottom">
         <a href="profil.php">retour au profil.</a>
         <a href="deconnexion.php">deconnexion</a>
-
+    </div>
     
 </body>

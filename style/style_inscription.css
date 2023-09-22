@@ -4,3 +4,30 @@
     margin-left: 20rem;
     margin-right: 20rem;
 }
+
+a {
+    text-decoration: none;
+    text-align: center;
+    font-size: 2em;
+    color: black;
+    font-family: Arial, sans-serif;
+    background-color: rgb(149, 149, 165);
+    padding: 2rem;
+    border: solid black 2px;
+    border-radius: 5px;
+    margin-top: 2rem;
+}
+
+#form_sign_in {
+    padding: 2rem;
+    background-color: rgb(149, 149, 165);
+    font-family: Arial, sans-serif;
+    color: black;
+    border: solid black 2px;
+    border-radius: 5px;
+}
+
+h1 {
+    font-family: Arial, sans-serif;
+    color: black; 
+}

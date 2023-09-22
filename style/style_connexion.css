@@ -1,31 +1,33 @@
-#form {
+#form_connexion {
     display: flex;
     flex-direction: column;
-    margin-top: 2em;
     margin-left: 20rem;
     margin-right: 20rem;
+}
+
+a {
     text-decoration: none;
     text-align: center;
-    font-size: 1em;
+    font-size: 2em;
     color: black;
     font-family: Arial, sans-serif;
     background-color: rgb(149, 149, 165);
     padding: 2rem;
     border: solid black 2px;
     border-radius: 5px;
-}
-#form_addExperience {
-    display: flex;
-    flex-direction: column;
-
-}
-#form_addFormation {
-    display: flex;
-    flex-direction: column;
-
+    margin-top: 2rem;
 }
 
-#form_loisir {
-    display: flex;
-    flex-direction: column;
+#form_connexion {
+    padding: 2rem;
+    background-color: rgb(149, 149, 165);
+    font-family: Arial, sans-serif;
+    color: black;
+    border: solid black 2px;
+    border-radius: 5px;
+}
+
+h1 {
+    font-family: Arial, sans-serif;
+    color: black; 
 }

@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV-crafter</title>
-    <link rel="stylesheet" type="text/css" href="style/style_inscription.css">
+    <link rel="stylesheet" type="text/css" href="../style/style_inscription.css">
 
 </head>
 <body>
     <div>
-        <h2>Sign up</h2>
+        <h1>Sign in</h1>
         <form id="form_sign_in" method="post" action="../module/module_inscription.php">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" placeholder="enter your name : ">

@@ -39,7 +39,6 @@ include "../class/User.php";
         <input type="submit" name="load_cv" value="Charger le CV sélectionné">
         </form>
 
-        <?php var_dump($_SESSION["id_cv"]); ?>
         <?php echo "cv charger : " . $_SESSION["id_cv"] ?>
         <a href="consulte_cv.php">consulte ton cv.</a>
     </div>

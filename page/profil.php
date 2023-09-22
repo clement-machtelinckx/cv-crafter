@@ -29,7 +29,7 @@ if (isset($userData)) {
     echo "Bienvenue " . $userData["name"] . " " . $userData["surname"];
 }
 ?>
-
+<h1>Profil</h1>
     <div>
         <form id="form_modif_profil" method="post" action="../module/module_profil.php">
             <label for="name">Name</label>
@@ -47,14 +47,15 @@ if (isset($userData)) {
             <input type="submit" value="Enter">
         </form>
     </div>
-    <a href="create_cv.php">Vos cv</a>
     <form id="form_createCv" method="post" action="../module/module_createCv.php">
         <label for="cv_name">nom de cv</label>
         <input type="text" name="cv_name" id="cv_name">
         <button type="submit" name="create_cv">Crée ton cv</button>
     </form>
+    <div id="bottom">
+    <a href="create_cv.php">Vos cv</a>
     <a href="deconnexion.php">deconnexion</a>
-
+    </div>
 </body>
 
 

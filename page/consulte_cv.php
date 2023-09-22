@@ -22,7 +22,7 @@ if (isset($_SESSION["id_cv"]) && !empty($_SESSION["id_cv"])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Consultation de CV</title>
-        <link rel="stylesheet" type="text/css" href="../style/style_consulte_cv.css">
+        <link rel="stylesheet" type="text/css" href="../style/consulte_cv.css">
     </head>
     <body>
         <!-- Affichez ici les détails du CV en utilisant les variables $experiences, $formations et $loisirs -->

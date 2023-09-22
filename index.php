@@ -9,7 +9,7 @@
 
 </head>
 <body>
-    <div>
+    <div id="index_a">
         <a href="page/inscription.php">sign in</a>
         <a href="page/connexion.php">log in</a>
     </div>
